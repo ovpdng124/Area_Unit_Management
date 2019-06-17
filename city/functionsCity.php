@@ -17,11 +17,12 @@ function getCities($cityId)
     }
 }
 
-function addCity($cityId, $cityName, $cityCode)
+function addCity($countryId, $cityId, $cityName, $cityCode)
 {
     $cities = getALlCities();
 
     $new_city = array(
+        "countryId" => $countryId,
         "cityId" => $cityId,
         "cityName" => $cityName,
         "cityCode" => $cityCode
@@ -43,11 +44,12 @@ function deleteCity($cityId)
     $_SESSION['cities'] = $cities;
 }
 
-function editCity($cityId, $cityName, $cityCode)
+function editCity($countryId, $cityId, $cityName, $cityCode)
 {
     $cities = getALlCities();
 
     $edit_city = array(
+        "countryId" => $countryId,
         "cityId" => $cityId,
         "cityName" => $cityName,
         "cityCode" => $cityCode
@@ -59,4 +61,18 @@ function editCity($cityId, $cityName, $cityCode)
         }
     }
     $_SESSION['cities'] = $cities;
+}
+
+function showListCity($countryId){
+    $cities = getALlCities();
+    $list = array();
+    foreach ($cities as $element) {
+        if($element["countryId"] == $countryId){
+            $list[] = $element;
+        }
+        if($countryId == null || empty($countryId)){
+            return $cities;
+        }
+    }
+    return $list;
 }

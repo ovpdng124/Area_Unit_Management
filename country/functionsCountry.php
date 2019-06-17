@@ -18,7 +18,6 @@ function getCountries($countryId)
 function addCountry($countryId, $countryName, $countryCode)
 {
     $countries = getAllCountries();
-
     $new_country = array(
         "countryId" => $countryId,
         "countryName" => $countryName,

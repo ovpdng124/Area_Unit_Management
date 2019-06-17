@@ -7,9 +7,7 @@ $countries = getAllCountries();
 if (isset($_POST['destroy'])) {
     session_destroy();
 }
-if (!empty($_POST['edit'])) {
-    header("Location:editCountry.php");
-}
+
 ?>
 <html lang="en">
 <head>
@@ -19,7 +17,6 @@ if (!empty($_POST['edit'])) {
 <body>
 <h1>Country List</h1>
 <h3><a href="addCountry.php">Add new</a></h3>
-
 
 
 <div class="list">
@@ -38,9 +35,9 @@ if (!empty($_POST['edit'])) {
                 <td><?php echo $element['countryName']; ?></td>
                 <td><?php echo $element['countryCode']; ?></td>
                 <td>
-                        <button name="edit"><a
-                                    href="../city/listCity.php">City</a>
-                        </button>
+                    <button name="city"><a
+                                href="../city/listCity.php?countryId=<?php echo $element['countryId'] ?>">City</a>
+                    </button>
                 </td>
                 <td>
                     <form action="deleteCountry.php" method="post">
@@ -65,4 +62,3 @@ if (!empty($_POST['edit'])) {
 </div>
 </body>
 </html>
-

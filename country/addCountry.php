@@ -7,7 +7,7 @@ $validate = array();
 
 
 if (!empty($_POST['submit'])) {
-    foreach ($countries as $key => $element) {
+    foreach ($countries as $element) {
         if ($element["countryId"] == $_POST["countryId"]) {
             $validate["existed"] = "This ID is existed!";
         }
@@ -61,7 +61,7 @@ if (!empty($_POST['submit'])) {
         <tr>
             <td><input type="submit" name="submit" value="Submit"/></td>
             <td><input type="submit" value="Clear"/>
-            <?php echo !empty($validate["existed"])? $validate["existed"]:'';?></td>
+                <?php echo !empty($validate["existed"]) ? $validate["existed"] : ''; ?></td>
         </tr>
     </form>
 </table>
