@@ -14,9 +14,22 @@ if (isset($_POST['destroy'])) {
     <meta charset="UTF-8"/>
     <title>Country List</title>
 </head>
+<style>
+
+    #edit,#city{
+        color: black;
+        text-decoration: none;
+    }
+    #edit,#city:visited{
+        color: black;
+    }
+    #link:visited{
+        color: blue;
+    }
+</style>
 <body>
 <h1>Country List</h1>
-<h3><a href="addCountry.php">Add new</a></h3>
+<h3><a id="link" href="addCountry.php">Add new</a></h3>
 
 
 <div class="list">
@@ -35,8 +48,8 @@ if (isset($_POST['destroy'])) {
                 <td><?php echo $element['countryName']; ?></td>
                 <td><?php echo $element['countryCode']; ?></td>
                 <td>
-                    <button name="city"><a
-                                href="../city/listCity.php?countryId=<?php echo $element['countryId'] ?>">City</a>
+                    <button name="city"><a id="city"
+                                href="../city/listCity.php?countryId=<?php echo $element['countryId'] ?>&countryName=<?php echo $element['countryName']?>">City</a>
                     </button>
                 </td>
                 <td>
@@ -47,17 +60,15 @@ if (isset($_POST['destroy'])) {
                     </form>
                 </td>
                 <td>
-                    <form action="editCountry.php" method="post">
-                        <button type="submit" name="edit"><a
-                                    href="editCountry.php?countryId=<?php echo $element['countryId'] ?>">Edit</a>
-                        </button>
-                    </form>
+                    <button type="submit" name="edit"><a id="edit"
+                                href="../country/editCountry.php?countryId=<?php echo $element['countryId'] ?>">Edit</a>
+                    </button>
                 </td>
             </tr>
         <?php } ?>
     </table>
     <form action="" method="post">
-        <input type="submit" value="Destroy" name="destroy"/>
+        <input type="submit" value="Destroy All" name="destroy"/>
     </form>
 </div>
 </body>

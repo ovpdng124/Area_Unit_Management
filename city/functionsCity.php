@@ -66,13 +66,18 @@ function editCity($countryId, $cityId, $cityName, $cityCode)
 function showListCity($countryId){
     $cities = getALlCities();
     $list = array();
+    $existed = false;
     foreach ($cities as $element) {
         if($element["countryId"] == $countryId){
             $list[] = $element;
+            $existed = true;
         }
         if($countryId == null || empty($countryId)){
             return $cities;
         }
+    }
+    if(!$existed){
+        return false;
     }
     return $list;
 }

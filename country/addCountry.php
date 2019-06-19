@@ -39,8 +39,14 @@ if (!empty($_POST['submit'])) {
     <title>Add country</title>
     <meta charset="UTF-8"/>
 </head>
+<style>
+    #link:visited{
+        color: blue;
+    }
+</style>
 <body>
-<h3><a href="../country/listCountry.php">Go to list</a></h3>
+<h2>Add new country</h2>
+<h3><a id="link" href="../country/listCountry.php">Go to list</a></h3>
 <table>
     <form action="" method="post">
         <tr>
